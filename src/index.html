@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <script src="https://unpkg.com/htmx.org@1.9.6/dist/htmx.min.js"></script>
+  <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+  <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <title>ToDo app written using Bun & HTMX</title>
+</head>
+<body>
+<header class="container">
+  <hgroup>
+    <h1>ToDo</h1>
+    <h2>app written using Bun & HTMX</h2>
+  </hgroup>
+</header>
+<main class="container">
+  <form hx-post="/todos" hx-target="#todos" hx-ext="json-enc" _="on submit target.reset()">
+    <label for="taskInput">
+      <input type="text" name="task" id="taskInput" placeholder="New task...">
+    </label>
+    <button type="submit">Add</button>
+  </form>
+
+  <section id="todos" hx-get="/todos" hx-trigger="load">
+
+  </section>
+</main>
+</body>
+</html>
